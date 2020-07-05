@@ -1,12 +1,42 @@
 # Operator Mono Ligatures
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
+<img src="./images/operator-mono-lig.png" />
+
 This project will generate new OpenType fonts for [Operator Mono](https://www.typography.com/fonts/operator/styles/) that includes ligatures similar to
 those found in the popular [Fira Code](https://github.com/tonsky/FiraCode) font.
 
-These ligatures were custom created using [Glyphs](https://glyphsapp.com/). 
-There are even italic versions of the ligatures. 
+These ligatures were custom created using [Glyphs](https://glyphsapp.com/).
+There are even italic versions of the ligatures.
 
-## Take the poll
+## 🎉 What's New in Version 2
+
+<img src="./images/new-ligatures.png"/>
+
+All new redesigned ligatures with better hinting. Updated font generation to support advanced OpenType features
+like those found in Fira Code. For example, the cursor now moves inside the ligature. It also handles repeating
+characters properly.
+
+<img src="./images/caret-position.gif" />
+
+With the awesome help from [Mark Skelton](https://github.com/mskelton), we now have the full set of ligatures for
+the following fonts. Thanks Mark, and thanks to all of you who have been patiently waiting for these ligatures to be completed.
+
+- Operator Mono SSm Light/Light Italic
+- Operator Mono SSm Book/Book Italic
+- Operator Mono SSm Medium/Medium Italic
+- Operator Mono SSm Bold/Bold Italic
+- Operator Mono Light/Light Italic
+- Operator Mono Book/Book Italic
+
+## 🙏 Help Wanted
+
+As noted above, v2 does not include all weights for Operator Mono. In order to update the other fonts, all the ligatures need to be redone. Unfortunately I just don't have the time to do that at the moment. If you have a Mac and are interested in helping, please let me know. I will even purchase a license to Gylphs Mini for you.
+
+You can reach me at kiliman@gmail.com.
+
+## ☑️ Take the poll
 
 Which font weight of Operator Mono do you use? Also note difference between Screen Smart (SSm) and regular version. This will help prioritize the order of development.
 
@@ -17,101 +47,122 @@ Which font weight of Operator Mono do you use? Also note difference between Scre
 [![](https://api.gh-polls.com/poll/01C6T4C3FBG21KVS7FAW7Z09B2/Operator%20Mono%20Medium)](https://api.gh-polls.com/poll/01C6T4C3FBG21KVS7FAW7Z09B2/Operator%20Mono%20Medium/vote)
 [![](https://api.gh-polls.com/poll/01C6T4C3FBG21KVS7FAW7Z09B2/Operator%20Mono%20Light)](https://api.gh-polls.com/poll/01C6T4C3FBG21KVS7FAW7Z09B2/Operator%20Mono%20Light/vote)
 
-I have updated the following fonts:
-
-## ScreenSmart versions
-* Operator Mono SSm Book
-* Operator Mono SSm Book Italic
-* Operator Mono SSm Medium
-* Operator Mono SSm Medium Italic
-* Operator Mono SSm Light
-* Operator Mono SSm Light Italic (**coming soon**)
-
-## Regular versions
-* Operator Mono Book
-* Operator Mono Book Italic
-* Operator Mono Medium
-* Operator Mono Medium Italic
-
-**Operator Mono SSm Book**
-
-<img src="./images/operator-mono-ssm-book.png" />
-
-**Operator Mono SSm Medium**
-
-<img src="./images/operator-mono-ssm-medium.png" />
-
-**Creating ligatures using Glyphs**
-
-<img src="./images/glyphs-screenshot.png" />
-
-**YouTube video (click to view)**
-
-[![Using Glyphs app to create ligatures for Operator Mono font](https://img.youtube.com/vi/ttI3W5Dh54E/0.jpg)](https://youtu.be/ttI3W5Dh54E)
-
->NOTE: Because *Operator Mono* is not a free font, you must have the original font files. This utility 
-will merge the ligature definitions into a copy of the original font. The new font family is named *Operator Mono Lig* so you can install it side-by-side with the original font.
+> NOTE: Because _Operator Mono_ is not a free font, you must have the original font files. This utility
+> will merge the ligature definitions into a copy of the original font. The new font family is named _Operator Mono Lig_ so you can install it side-by-side with the original font.
 
 ## Prerequisites
-* The original *Operator Mono* font... of course.
-* Install *fonttools* from https://github.com/fonttools/fonttools
-  * Install Python
-  * Run: `pip install fonttools` (for Mac users it's better run `pip3 install fonttools` - [info](https://stackoverflow.com/a/33416270/3191011))
-* Node.js (**version 7.6+ for async/await support**)
 
-## How to Install
+- The original _Operator Mono_ font... of course.
+- Python (v2.7+)
+- Node.js
+- Install _fonttools_ from https://github.com/fonttools/fonttools
+  - Windows/Linux: `pip install fonttools`
+  - Mac: `pip3 install fonttools`
 
-1. Once all the prerequisites have been installed, clone this repo.
+## Installation
 
-2. From the command line, run:
+Once all the prerequisites have been installed, clone this repo or download latest release from [Releases](https://github.com/kiliman/operator-mono-lig/releases) and unzip.
 
-```
+Next, copy your _Operator Mono_ OpenType files into the `original` folder. **NOTE**: Filenames must not include spaces. It should look like:
+
+- OperatorMonoSSm-Book.otf
+- OperatorMonoSSm-BookItalic.otf
+- OperatorMono-Light.otf
+- OperatorMono-LightItalic.otf
+- etc.
+
+Finally, run the following commands to install npm dependencies and build the font files. The new font files will be placed in the `build` folder. You can now install these fonts on your system.
+
+```sh
 npm install
-```
 
-3. Copy your *Operator Mono* OpenType files into the `original` folder.
-- **NOTE**: File names must strictly be of the form `OperatorMono-[Book/BookItalic/Medium/MediumItalic].otf`.
-
-4. From the command line, run:
-
-### Windows
-
-```
+# Windows
 build
-```
 
-### Linux/Mac
-
-```
+# Linux/Mac
 ./build.sh
 ```
 
-This will generate the new font files in the `build` folder. You can now install these fonts on your system.
+### Docker
 
----
+If you use Docker, you can also use the executable Docker image [here](https://github.com/drod3763/kiliman-operator-mono-lig-docker). It handles all the prerequisite installation for you, you just need to:
 
-<img src="./images/OperatorMonoAllTheThings.png" />
+1. Clone the repo [located here](https://github.com/drod3763/kiliman-operator-mono-lig-docker).
+1. Copy your _Operator Mono_ OpenType files into the `input` folder.
+1. From the command line run:
+   ```sh
+   docker-compose run --rm operator-mono-lig
+   ```
 
-## GitHub
-Add *Operator Mono* to GitHub code blocks using the [Stylus Extension](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne).
+The image will build and execute the conversion. The new font files will be generated into the `build` folder.
 
-Create a style and enter the following:
+## Configure Your Code Editor
 
-```css
-.blob-code-inner, .blob-num, .highlight pre { font-family: "Operator Mono Lig" !important; font-size: 16px !important; }
-.pl-c, .pl-e { font-style: italic; }
-.pl-c { color: #4CAF50; }
+You can now select the newly generated font in your code editor. Make sure you enable font ligatures and set the desired font weight if using Windows. The code block below shows what this might look like if using VS Code.
+
+```json
+  "editor.fontFamily": "OperatorMonoSSmLig-Book",
+  "editor.fontLigatures": true,
+  // for Windows
+  "editor.fontFamily": "Operator Mono SSm Lig",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "500",   // adjust for desired weight
 ```
-<img src="./images/github-operatormono.png" />
 
-## Visual Studio
+## 🔧 Customize the generated font
 
-You can have Visual Studio display the nice *Operator Mono* italic font for comments, using the [CommentsPlus Extension](https://marketplace.visualstudio.com/items?itemName=mhoumann.CommentsPlus).
+By default, all available ligatures will be added to the generated font. However, if you don't like a particular
+ligature, or would prefer to use an alternate glyph, you can create a `profiles.ini` file in the `./original` folder
+to configure how the font should be built.
 
-<img src="./images/vsoperatormono.png" />
+You can create one or more profiles. Each profile will have a set of directives. You can specify alternate glyphs for
+a given ligature. You can also prevent a ligature from being added.
 
-## Hyper shell
+Each profile will be listed with `[profile name]` (the first profile should be named default). The generated font will
+include the profile name. For example `[Go]` would generate the font: _Operator Mono Lig Go_. This way you can configure
+a different set of ligatures for each language in your favorite code editor.
 
-Add *Operator Mono* to [Hyper](https://hyper.is/) a JS/CSS/HTML Terminal.
+```ini
+# name of profile (one or more sections, first should be name default)
+[default]
+# glyph=altglyph
+greater_equal.liga=greater_equal.2.liga
 
-<img src="./images/hyper terminal.png" />
+# do not include glyph (add ! prefix)
+!equal_equal.liga
+
+# another optional section (will create a font named Operator Mono Lig Go)
+[Go]
+... add custom directives for this font ...
+```
+
+## 😍 Thank You
+
+Thanks to Hoefler&Co for making such an amazing font. It makes writing code truly pleasurable.
+
+Thanks also to all of you for your kinds words of encouragement and feedback. I really
+appreciate it.
+
+## ✨ Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/kiliman"><img src="https://avatars3.githubusercontent.com/u/47168?v=4" width="100px;" alt="Kiliman"/><br /><sub><b>Kiliman</b></sub></a><br /><a href="https://github.com/kiliman/operator-mono-lig/commits?author=kiliman" title="Code">💻</a> <a href="https://github.com/kiliman/operator-mono-lig/commits?author=kiliman" title="Documentation">📖</a> <a href="#design-kiliman" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/mskelton"><img src="https://avatars3.githubusercontent.com/u/25914066?v=4" width="100px;" alt="Mark Skelton"/><br /><sub><b>Mark Skelton</b></sub></a><br /><a href="#design-mskelton" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/drod3763"><img src="https://avatars2.githubusercontent.com/u/7785716?v=4" width="100px;" alt="Derick Rodriguez"/><br /><sub><b>Derick Rodriguez</b></sub></a><br /><a href="https://github.com/kiliman/operator-mono-lig/commits?author=drod3763" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/amitkparekh"><img src="https://avatars3.githubusercontent.com/u/7276308?v=4" width="100px;" alt="Amit Parekh"/><br /><sub><b>Amit Parekh</b></sub></a><br /><a href="https://github.com/kiliman/operator-mono-lig/commits?author=amitkparekh" title="Documentation">📖</a> <a href="#design-amitkparekh" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/CandySunPlus"><img src="https://avatars0.githubusercontent.com/u/502700?v=4" width="100px;" alt="NikSun"/><br /><sub><b>NikSun</b></sub></a><br /><a href="#design-CandySunPlus" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Jakob6174"><img src="https://avatars3.githubusercontent.com/u/40262817?v=4" width="100px;" alt="Jakob Pearson"/><br /><sub><b>Jakob Pearson</b></sub></a><br /><a href="https://github.com/kiliman/operator-mono-lig/commits?author=Jakob6174" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
